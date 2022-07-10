@@ -1,0 +1,1 @@
+In this folder the SQLite database will be created of the Inventory application.
