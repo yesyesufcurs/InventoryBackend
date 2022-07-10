@@ -34,4 +34,14 @@ public class Item
     /// Gets or sets the category of an item.
     /// </summary>
     public Category Category { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Invoice Id of the item.
+    /// </summary>
+    public int? InvoiceId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Invoice of the item.
+    /// </summary>
+    public Invoice? Invoice { get; set; }
 }

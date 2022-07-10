@@ -2,10 +2,10 @@
 // Copyright (c) Vincent (yesyesufcurs). All rights reserved.
 // </copyright>
 
+namespace InventoryV3.Data;
+
 using InventoryV3.Models;
 using Microsoft.EntityFrameworkCore;
-
-namespace InventoryV3.Data;
 
 public class DataContext : DbContext
 {
@@ -18,8 +18,13 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Invoice>()
-            .Navigation(t => t.Item).AutoInclude();
+        //modelBuilder.Entity<Invoice>()
+        //    .Navigation(t => t.Item).AutoInclude();
+
+        modelBuilder.Entity<Item>()
+            .HasOne(x => x.Invoice)
+            .WithOne(x => x.Item)
+            .HasForeignKey<Invoice>(x => x.Id);
     }
 
     /// <summary>

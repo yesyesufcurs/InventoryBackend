@@ -8,7 +8,7 @@ namespace InventoryV3.Service.Controllers
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ItemsController : ControllerBase
     {
@@ -76,5 +76,30 @@ namespace InventoryV3.Service.Controllers
             return Ok(await _context.Items.ToListAsync());
         }
 
+        [HttpPost("/Invoices")]
+        public async Task<ActionResult<List<Item>>> AddInvoice(Invoice invoice)
+        {
+            _context.Invoices.Add(new Invoice
+            {
+                ItemId = invoice.ItemId,
+                FileExtension = invoice.FileExtension,
+                Data = invoice.Data,
+            });
+
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpGet("/Invoices/{id}")]
+        public async Task<ActionResult<Item>> GetInvoice(int id)
+        {
+            var invoice = await _context.Invoices.FirstOrDefaultAsync(x => x.ItemId == id);
+            if (invoice is null)
+            {
+                return BadRequest("Invoice not found");
+            }
+
+            return Ok(invoice);
+        }
     }
 }
