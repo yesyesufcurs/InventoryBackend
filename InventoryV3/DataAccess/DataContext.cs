@@ -17,14 +17,6 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
-        //modelBuilder.Entity<Invoice>()
-        //    .Navigation(t => t.Item).AutoInclude();
-
-        modelBuilder.Entity<Item>()
-            .HasOne(x => x.Invoice)
-            .WithOne(x => x.Item)
-            .HasForeignKey<Invoice>(x => x.Id);
     }
 
     /// <summary>
@@ -32,8 +24,4 @@ public class DataContext : DbContext
     /// </summary>
     public DbSet<Item> Items { get; set; }
 
-    /// <summary>
-    /// Gets or sets the <see cref="Invoice"/> table.
-    /// </summary>
-    public DbSet<Invoice> Invoices { get; set; }
 }

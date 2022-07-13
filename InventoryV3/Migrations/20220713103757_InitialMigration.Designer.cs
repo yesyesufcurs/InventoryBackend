@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventoryV3.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220710140212_InitialMigration")]
+    [Migration("20220713103757_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace InventoryV3.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateOfPurchase")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("Invoice")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

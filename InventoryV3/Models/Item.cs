@@ -35,13 +35,9 @@ public class Item
     /// </summary>
     public Category Category { get; set; }
 
-    /// <summary>
-    /// Gets or sets the Invoice Id of the item.
-    /// </summary>
-    public int? InvoiceId { get; set; }
 
     /// <summary>
     /// Gets or sets the Invoice of the item.
     /// </summary>
-    public Invoice? Invoice { get; set; }
+    public string? Invoice { get; set; }
 }
