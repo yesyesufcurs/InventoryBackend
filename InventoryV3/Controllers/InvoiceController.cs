@@ -83,7 +83,7 @@ public class InvoiceController : ControllerBase
         if (item.Invoice is null)
             return BadRequest("Item has no invoice.");
 
-        // Get item and download it.
+        // Get item and download it
         var path = Path.Combine(uploadPath, item.Invoice);
         var stream = System.IO.File.OpenRead(path);
         return new FileStreamResult(stream, "application/octet-stream")
